@@ -1,0 +1,87 @@
+html, body {
+
+	height: 100%;
+
+	width: 1000px;
+	margin: 0 auto;
+
+	text-align: center;
+	font-size: 12px !important;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+
+	/*background: #282827;*/
+	line-height: 23px;
+
+}
+/*
+	Fix for GylphIcons positioned a little top
+*/
+.glyphicon{
+	top:8px;
+}
+
+.format-toolbar span {
+	margin-left:10px;
+	margin-top: -3px;
+	display: block;
+	z-index: -1
+}
+
+.format-toolbar {
+    width: 24px;
+	height:auto;
+	border-radius: 5px;
+	box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, .26), 0px 1px 0px 0px rgba(255, 255, 255, .15);
+	opacity: 0.7;
+	z-index: 2;
+}
+
+.format-toolbar:hover {
+	-webkit-filter: drop-shadow(5px 5px 5px #222);
+	filter:         drop-shadow(5px 5px 5px #222);
+
+	background-color: transparent;
+	/*opacity: 1;*/
+	cursor: pointer;
+	/*z-index: 2;*/
+
+	opacity: .25;
+	z-index: -1;
+}
+#format-toolbar-options {
+	display: none;
+}
+
+.tool-item {
+	text-align: -webkit-left;
+	width: 100%;
+	height: auto;
+	white-space: nowrap;
+	padding: 5px;
+}
+
+.tool-item:hover {
+    background-color: #0a6aa1;
+    color: white;
+    width: 91%;
+}
+
+.tool-container {
+    margin-left: -40px;
+    background-color: #DBDBDB;
+    /*width: 200px;*/
+}
+
+img {
+	width: 32px;
+	height: auto;
+	float: right;
+}
+
+pre {
+	display: inline-table;
+}
+.report {
+
+}

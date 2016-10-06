@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="utf-8">
+    <title>Pressure Test</title>
+
+    <!-- ===== Angular ===== -->
+    <script src="libs/angular/angular.js"></script>
+    <script src="libs/angular/angular-animate.js"></script>
+    <script src="libs/angular/angular-ui-bootstrap-tools.js"></script>
+    <script src="libs/angular/angular-sanitize.js"></script>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.6/ngStorage.min.js"></script>-->
+
+    <!-- ===== Jquery ===== -->
+    <link rel="stylesheet" href="libs/jquery/jquery.min.css"/>
+    <link rel="stylesheet" href="libs/jquery/jquery-ui.min.css"/>
+    <script src="libs/jquery/jquery.js"></script>
+    <script src="libs/jquery/jquery-ui.js"></script>
+    <script src="libs/jquery/jquery-highlight.js"></script>
+
+    <!-- ===== Bootstrap ===== -->
+    <link rel="stylesheet" href="libs/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <script src="libs/bootstrap/js/bootstrap.js"></script>
+
+    <!-- ===== Toolbar ===== -->
+    <script src="libs/toolbar/jquery.toolbar.js"></script>
+    <link href="libs/toolbar/jquery.toolbar.css" rel="stylesheet">
+
+    <!-- ===== Stylesheets ===== -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/default/style.css">
+
+    <!-- ===== Scripts ===== -->
+
+    <script src="js/app.js"></script>
+
+</head>
+
+<body ng-controller="HomeCtrl">
+<nav class="navbar navbar-inverse" role="navigation">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" ui-sref="home"> Blood Pressure Check</a>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+</nav>
+<br>
+<div class="container-fluid table">
+    <div class="row ">
+        <div class="col-md-12" ng-repeat="(key, value) in pressure track by $index">
+            <div class="col-md-8">
+            <pre>
+                <span>Pre-dialysis Sitting Systolic Blood Pressure:</span>
+                <img ng-if="pressure[key].rate < 167 && pressure[key].rate > 161" class="format-toolbar"
+                     toolbar-tip="{content: '#format-toolbar-options', position: 'right'}"
+                     ng-src="content/green.png"/>
+
+                 <img ng-if="pressure[key].rate < 158 || pressure[key].rate > 171" class="format-toolbar"
+                      toolbar-tip="{content: '#format-toolbar-options', position: 'right'}"
+                      ng-src="content/red.png"/>
+
+
+                <img ng-if="pressure[key].rate <= 161 && pressure[key].rate >= 158 || value.rate >= 167 && value.rate <= 171" class="format-toolbar"
+                      toolbar-tip="{content: '#format-toolbar-options', position: 'right'}"
+                      ng-src="content/yellow.png"/>
+
+                    <input type="text" name="input" ng-model="pressure[key].rate"> mmHg
+            </pre>
+            </div>
+            <div class="col-md-4">
+            <h5>
+                Your pressure is {{pressure[key].rate}}
+            </h5>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            &nbsp;
+        </div>
+        <div class="col-md-4">
+            <div class="input-group">
+                <input class="form-control" ng-model="newItem" type="text">
+                <div class="input-group-btn">
+                    <button  type="button"  class="btn btn-default" aria-label="Left Align"
+                             ng-click="add(newItem)">
+                        Add Check
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+    <div id="format-toolbar-options">
+        <a href="#"><i class="fa fa-exclamation-triangle"></i>&nbsp;Check</a>
+        <a href="#"><i class="fa fa-exclamation-circle"> </i>&nbsp;Test Required</a>
+        <a href="#"><i class="fa fa-comments"> </i>&nbsp;Annotation</a>
+        <a href="#"><i class="fa fa-exchange"> </i>&nbsp;Reason</a>
+    </div>
+
+</body>
+</html>
